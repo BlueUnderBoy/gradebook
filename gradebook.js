@@ -47,5 +47,12 @@ function AGObject(id, n, cid, wp) {
         "alist":[]
     }
     ago[n] = d
-    return "Assignment Group " + ago[n]["agname"] + " has been added"
+    return "Assignment Group " + ago[n]["agname"] + " has been added for " + co[(cid-1)]
 }
+
+console.log(AGObject(agid,"KBA", 1, 0.25))
+console.log(AGObject(agid,"SBA", 1, 0.75))
+console.log(AGObject(agid,"KBA", 2, 0.25))
+console.log(AGObject(agid,"SBA", 2, 0.25))
+console.log(AGObject(agid,"KBA", 3, 0.25))
+console.log(AGObject(agid,"SBA", 3, 0.25))
