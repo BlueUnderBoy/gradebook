@@ -20,6 +20,9 @@ var cid = 1;
 var aid = 1;
 var agid = 1;
 let co = [];
+let ao = [];
+let ago = [];
+let so = [];
 function CourseObject(id,n) {
     cid++
     let d = {
@@ -30,7 +33,19 @@ function CourseObject(id,n) {
     return "Course " + co[n]["coursename"] + " has been added" 
 }
 
-console.log(CourseObject(cid,"JS"))
-console.log(co["JS"]["courseid"])
-//console.log(CourseObject(cid,"PYC"))
-//console.log(CourseObject(cid,"RBC"))
+console.log(CourseObject(cid,"JSC"))
+console.log(CourseObject(cid,"PYC"))
+console.log(CourseObject(cid,"RBC"))
+
+function AGObject(id, n, cid, wp) {
+    agid++
+    let d = {
+        "agid":id,
+        "agname":n,
+        "courseid":cid,
+        "wp": wp,
+        "alist":[]
+    }
+    ago[n] = d
+    return "Assignment Group " + ago[n]["agname"] + " has been added"
+}
