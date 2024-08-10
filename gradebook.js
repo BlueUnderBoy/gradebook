@@ -19,16 +19,18 @@ var sid = 1;
 var cid = 1;
 var aid = 1;
 var agid = 1;
+let co = [];
 function CourseObject(id,n) {
     cid++
-    n = {
-        courseid:id,
-        coursename:n
+    let d = {
+        "courseid":id,
+        "coursename":n
     }
-    return n
+    co[n] = d
+    return co
 }
 
-console.log(CourseObject(cid,"JSC"))
-console.log(CourseObject(cid,"PYC"))
-console.log(CourseObject(cid,"RBC"))
-
+console.log(CourseObject(cid,"JS"))
+console.log(co["JS"]["courseid"])
+//console.log(CourseObject(cid,"PYC"))
+//console.log(CourseObject(cid,"RBC"))
