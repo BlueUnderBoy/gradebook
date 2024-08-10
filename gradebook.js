@@ -27,7 +27,7 @@ function CourseObject(id,n) {
         "coursename":n
     }
     co[n] = d
-    return co
+    return "Course " + co[n]["coursename"] + " has been added" 
 }
 
 console.log(CourseObject(cid,"JS"))
