@@ -56,3 +56,11 @@ function AssignmentObject(id, n, deadline, mp, agn) {
         ao[r] = d
         return "Assignment " + ao[r][aname] + " has been added to " + ao[r][agn]
 }
+console.log(ago)
+console.log(AssignmentObject(aid, "JavaScript Exam", "2024-09-25", 25, "JSC_KBA"))
+console.log(AssignmentObject(aid, "JavaScript Fundamentals", "2024-09-25", 75, "JSC_SBA"))
+console.log(AssignmentObject(aid, "Python Exam", "2024-09-25", 25, "PYC_KBA"))
+console.log(AssignmentObject(aid, "Python Fundamentals", "2024-09-25", 75, "PYC_SBA"))
+console.log(AssignmentObject(aid, "Ruby Exam", "2024-09-25", 25, "RBC_KBA"))
+console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-25", 75, "RBC_SBA"))
+console.log(ao)
