@@ -54,7 +54,7 @@ function AssignmentObject(id, n, deadline, mp, agn) {
             "ag":agn
         }
         ao[r] = d
-        return "Assignment " + ao[r][aname] + " has been added to " + ao[r][agn]
+        return "Assignment " + ao[r]["aname"] + " has been added to " + ao[r]["agn"]
 }
 console.log(ago)
 console.log(AssignmentObject(aid, "JavaScript Exam", "2024-09-25", 25, "JSC_KBA"))
