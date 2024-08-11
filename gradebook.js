@@ -54,6 +54,7 @@ function AssignmentObject(id, n, deadline, mp, agn) {
             "agid":ago[agn]["agid"]
         }
         ao[r] = d
+        ago[agn]["alist"].push(r)
         return "Assignment " + ao[r]["aname"] + " has been added to " + ago[agn]["agname"]
 }
 console.log(ago)
@@ -64,3 +65,10 @@ console.log(AssignmentObject(aid, "Python Fundamentals", "2024-09-25", 75, "SBA_
 console.log(AssignmentObject(aid, "Ruby Exam", "2024-09-25", 25, "KBA_RBC"))
 console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-25", 75, "SBA_RBC"))
 console.log(ao)
+
+console.log(ago["KBA_JSC"]["alist"])
+console.log(ago["KBA_PYC"]["alist"])
+console.log(ago["KBA_RBC"]["alist"])
+console.log(ago["SBA_JSC"]["alist"])
+console.log(ago["SBA_PYC"]["alist"])
+console.log(ago["SBA_RBC"]["alist"])
