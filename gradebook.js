@@ -42,3 +42,8 @@ console.log(AGObject(agid,"SBA", "PYC", 0.75))
 console.log(AGObject(agid,"KBA", "RBC", 0.25))
 console.log(AGObject(agid,"SBA", "RBC", 0.75))
 console.log(ago)
+
+function AssignmentObject(id, n, deadline, mp, agid) {
+        aid++
+        
+}
