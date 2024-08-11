@@ -23,7 +23,7 @@ console.log(CourseObject(cid,"RBC"))
 
 function AGObject(id, n, cn, wp) {
     agid++
-    r = cn + "_" + n 
+    const r = n + "_" + cn 
     let d = {
         "agid":id,
         "agname":n,
@@ -43,7 +43,16 @@ console.log(AGObject(agid,"KBA", "RBC", 0.25))
 console.log(AGObject(agid,"SBA", "RBC", 0.75))
 console.log(ago)
 
-function AssignmentObject(id, n, deadline, mp, agid) {
+function AssignmentObject(id, n, deadline, mp, agn) {
         aid++
-        
+        const r = n + "_" + agn
+        let d = {
+            "aid":id,
+            "aname":n,
+            "duedate":deadline,
+            "maxpoints":mp,
+            "ag":agn
+        }
+        ao[r] = d
+        return "Assignment " + ao[r][aname] + " has been added to " + ao[r][agn]
 }
