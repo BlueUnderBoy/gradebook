@@ -51,7 +51,7 @@ function AssignmentObject(id, n, deadline, mp, agn) {
             "aname":n,
             "duedate":deadline,
             "maxpoints":mp,
-            "ag":agn
+            "agn":agn
         }
         ao[r] = d
         return "Assignment " + ao[r]["aname"] + " has been added to " + ao[r]["agn"]
