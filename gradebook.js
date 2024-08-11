@@ -82,4 +82,14 @@ console.log(AssignmentObject(aid, "Ruby Exam", "2024-09-25", 25, "KBA_RBC"))
 console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-30", 75, "SBA_RBC"))
 console.log(ao)
 
-function SubmissionObject() {}
+function SubmissionObject(ln, an) {
+    if (ao[an][//finish this line])
+    let d = {
+        "learnerid":lo[ln]["lid"],
+        "assignmentid":ao[an]["aid"],
+        "sinfo":{
+            "sdate":today.toISOString().split('T')[0],
+            "grade":(Math.round(Math.random()) * 25)
+        }
+    }
+}
