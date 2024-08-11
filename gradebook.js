@@ -3,10 +3,12 @@ var sid = 1;
 var cid = 1;
 var aid = 1;
 var agid = 1;
+var lid = 1;
 let co = [];
 let ao = [];
 let ago = [];
 let so = [];
+let lo = [];
 function CourseObject(id,n) {
     cid++
     let d = {
@@ -20,6 +22,20 @@ function CourseObject(id,n) {
 console.log(CourseObject(cid,"JSC"))
 console.log(CourseObject(cid,"PYC"))
 console.log(CourseObject(cid,"RBC"))
+
+function LearnerObject(id, n) {
+    lid++
+    let d = {
+        "learnerid":id,
+        "lname":n
+    }
+    lo[n] = d
+    return n + " has been added."
+}
+
+console.log(LearnerObject(lid, "LeBron James"))
+console.log(LearnerObject(lid, "Kevin Durant"))
+console.log(LearnerObject(lid, "Stephen Curry"))
 
 function AGObject(id, n, cn, wp) {
     agid++
@@ -59,16 +75,11 @@ function AssignmentObject(id, n, deadline, mp, agn) {
 }
 console.log(ago)
 console.log(AssignmentObject(aid, "JavaScript Exam", "2024-09-25", 25, "KBA_JSC"))
-console.log(AssignmentObject(aid, "JavaScript Fundamentals", "2024-09-25", 75, "SBA_JSC"))
+console.log(AssignmentObject(aid, "JavaScript Fundamentals", "2024-09-30", 75, "SBA_JSC"))
 console.log(AssignmentObject(aid, "Python Exam", "2024-09-25", 25, "KBA_PYC"))
-console.log(AssignmentObject(aid, "Python Fundamentals", "2024-09-25", 75, "SBA_PYC"))
+console.log(AssignmentObject(aid, "Python Fundamentals", "2024-09-30", 75, "SBA_PYC"))
 console.log(AssignmentObject(aid, "Ruby Exam", "2024-09-25", 25, "KBA_RBC"))
-console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-25", 75, "SBA_RBC"))
+console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-30", 75, "SBA_RBC"))
 console.log(ao)
 
-console.log(ago["KBA_JSC"]["alist"])
-console.log(ago["KBA_PYC"]["alist"])
-console.log(ago["KBA_RBC"]["alist"])
-console.log(ago["SBA_JSC"]["alist"])
-console.log(ago["SBA_PYC"]["alist"])
-console.log(ago["SBA_RBC"]["alist"])
+function SubmissionObject() {}
