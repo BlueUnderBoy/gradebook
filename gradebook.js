@@ -90,12 +90,12 @@ function SubmissionObject(ln, an) {
         const sday = new Date(ao[an]["duedate"])
         const ddate = sday.toISOString().split('T')[0];
         if (date > ddate) {
-            let sub = ln + "_Submission"
+            let sub = ln + "_Submission_" + an
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate":today,
+                    "sdate":date,
                     "grade":(Math.round(Math.random())*25)-2.5
                 }
             }
@@ -103,12 +103,12 @@ function SubmissionObject(ln, an) {
             return ln + " has succussfully submitted a KBA."
         }
         else {
-            let sub = ln + "_Submission"
+            let sub = ln + "_Submission_" + an
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate":today,
+                    "sdate":date,
                     "grade":Math.round(Math.random())*25
                 }
             }
@@ -120,12 +120,12 @@ function SubmissionObject(ln, an) {
         const sday = new Date(ao[an]["duedate"])
         const ddate = sday.toISOString().split('T')[0];
         if (date > ddate) {
-            let sub = ln + "_Submission"
+            let sub = ln + "_Submission_" + an
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate": today,
+                    "sdate": date,
                     "grade":(Math.round(Math.random()) * 25)
                         }
                     }
@@ -133,12 +133,12 @@ function SubmissionObject(ln, an) {
             return ln + " has succussfully submitted a SBA."
             }
         else {
-            let sub = ln + "_Submission"
+            let sub = ln + "_Submission_" + an
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate": today,
+                    "sdate": date,
                     "grade":((Math.round(Math.random()) * 25)-2.5)
                         }
                     }
@@ -158,3 +158,4 @@ console.log(SubmissionObject("LeBron James", "KBA_PYC_Python Exam"))
 console.log(SubmissionObject("LeBron James", "KBA_JSC_JavaScript Exam"))
 console.log(SubmissionObject("Kevin Durant", "SBA_RBC_Ruby Fundamentals"))
 console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
+console.log(so)
