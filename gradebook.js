@@ -96,7 +96,7 @@ function SubmissionObject(ln, an) {
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
                     "sdate":date,
-                    "grade":(getRandomInt(1,25))-2.5
+                    "grade":((Math.random()+0.1)*25)-2.5
                 }
             }
             so[sub] = d 
@@ -109,7 +109,7 @@ function SubmissionObject(ln, an) {
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
                     "sdate":date,
-                    "grade":(getRandomInt(1,25))*25
+                    "grade":(Math.random()+0.1)*25
                 }
             }
             so[sub] = d 
@@ -126,7 +126,7 @@ function SubmissionObject(ln, an) {
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
                     "sdate": date,
-                    "grade":(getRandomInt(1,25))*75
+                    "grade":(Math.random()+0.1)*75
                         }
                     }
             so[sub] = d 
@@ -139,7 +139,7 @@ function SubmissionObject(ln, an) {
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
                     "sdate": date,
-                    "grade":((getRandomInt(1,25))*75-7.5)
+                    "grade":(Math.random()+0.1)*75-7.5
                         }
                     }
             so[sub] = d 
