@@ -74,12 +74,12 @@ function AssignmentObject(id, n, deadline, mp, agn) {
         return "Assignment " + ao[r]["aname"] + " has been added to " + ago[agn]["agname"]
 }
 console.log(ago)
-console.log(AssignmentObject(aid, "JavaScript Exam", "2024-09-25", 25, "KBA_JSC"))
-console.log(AssignmentObject(aid, "JavaScript Fundamentals", "2024-09-30", 75, "SBA_JSC"))
-console.log(AssignmentObject(aid, "Python Exam", "2024-09-25", 25, "KBA_PYC"))
-console.log(AssignmentObject(aid, "Python Fundamentals", "2024-09-30", 75, "SBA_PYC"))
-console.log(AssignmentObject(aid, "Ruby Exam", "2024-09-25", 25, "KBA_RBC"))
-console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-30", 75, "SBA_RBC"))
+console.log(AssignmentObject(aid, "JavaScript Exam", "2024-07-25", 25, "KBA_JSC"))
+console.log(AssignmentObject(aid, "JavaScript Fundamentals", "2024-07-30", 75, "SBA_JSC"))
+console.log(AssignmentObject(aid, "Python Exam", "2024-07-25", 25, "KBA_PYC"))
+console.log(AssignmentObject(aid, "Python Fundamentals", "2024-07-30", 75, "SBA_PYC"))
+console.log(AssignmentObject(aid, "Ruby Exam", "2024-07-25", 25, "KBA_RBC"))
+console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-07-30", 75, "SBA_RBC"))
 console.log(ao)
 
 function SubmissionObject(ln, an) {
@@ -158,4 +158,7 @@ console.log(SubmissionObject("LeBron James", "KBA_PYC_Python Exam"))
 console.log(SubmissionObject("LeBron James", "KBA_JSC_JavaScript Exam"))
 console.log(SubmissionObject("Kevin Durant", "SBA_RBC_Ruby Fundamentals"))
 console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
-console.log(so)
+
+function GetLearnerData(lname, courseid, agid) {
+
+}
