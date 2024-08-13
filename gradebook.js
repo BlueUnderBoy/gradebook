@@ -90,6 +90,7 @@ function SubmissionObject(ln, an) {
         const sday = new Date(ao[an]["duedate"])
         const ddate = sday.toISOString().split('T')[0];
         if (date > ddate) {
+            let sub = ln + "_Submission"
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
@@ -98,8 +99,11 @@ function SubmissionObject(ln, an) {
                     "grade":(Math.round(Math.random())*25)-2.5
                 }
             }
+            so[sub] = d 
+            return ln + " has succussfully submitted a KBA."
         }
         else {
+            let sub = ln + "_Submission"
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
@@ -108,12 +112,15 @@ function SubmissionObject(ln, an) {
                     "grade":Math.round(Math.random())*25
                 }
             }
+            so[sub] = d 
+            return ln + " has succussfully submitted an KBA."
         }
     }
     else if (an.includes("SBA")) {
         const sday = new Date(ao[an]["duedate"])
         const ddate = sday.toISOString().split('T')[0];
         if (date > ddate) {
+            let sub = ln + "_Submission"
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
@@ -122,8 +129,11 @@ function SubmissionObject(ln, an) {
                     "grade":(Math.round(Math.random()) * 25)
                         }
                     }
-                                    }
+            so[sub] = d 
+            return ln + " has succussfully submitted a SBA."
+            }
         else {
+            let sub = ln + "_Submission"
             let d = {
                 "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
@@ -132,6 +142,8 @@ function SubmissionObject(ln, an) {
                     "grade":((Math.round(Math.random()) * 25)-2.5)
                         }
                     }
+            so[sub] = d 
+            return ln + " has succussfully submitted a SBA."
             }
                                     }
     else {
@@ -139,3 +151,10 @@ function SubmissionObject(ln, an) {
         }
 }                                                                                                                                                                                                               
 console.log(SubmissionObject("LeBron James", "SBA_RBC_Ruby Fundamentals"))
+console.log(SubmissionObject("LeBron James", "SBA_PYC_Python Fundamentals"))
+console.log(SubmissionObject("LeBron James", "SBA_JSC_JavaScript Fundamentals"))
+console.log(SubmissionObject("LeBron James", "KBA_RBC_Ruby Exam"))
+console.log(SubmissionObject("LeBron James", "KBA_PYC_Python Exam"))
+console.log(SubmissionObject("LeBron James", "KBA_JSC_JavaScript Exam"))
+console.log(SubmissionObject("Kevin Durant", "SBA_RBC_Ruby Fundamentals"))
+console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
