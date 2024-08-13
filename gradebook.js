@@ -159,7 +159,12 @@ console.log(SubmissionObject("LeBron James", "KBA_JSC_JavaScript Exam"))
 console.log(SubmissionObject("Kevin Durant", "SBA_RBC_Ruby Fundamentals"))
 console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
 
-function GetLearnerData(lname) {
-    
-
+function GetLearnerData(ln, an) {
+    let sub = ln + "_Submission_" + an
+    let a = ao[an]["aid"]
+    let d = {
+        "id":lo[ln]["learnerid"],
+        "avg":,
+        a: so[sub]["sinfo"]["grade"]
+    }
 }
