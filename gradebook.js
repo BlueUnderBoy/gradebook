@@ -1,4 +1,4 @@
-//Create gradebook
+//Create gradebook 
 var sid = 1;
 var cid = 1;
 var aid = 1;
@@ -83,27 +83,53 @@ console.log(AssignmentObject(aid, "Ruby Fundamentals", "2024-09-30", 75, "SBA_RB
 console.log(ao)
 
 function SubmissionObject(ln, an) {
+    const date = new Date()
     if (an.includes("KBA")) {
-        let d = {
-            "learnerid":lo[ln]["lid"],
-            "assignmentid":ao[an]["aid"],
-            "sinfo":{
-                "sdate":today.toISOString().split('T')[0],
-                "grade":(Math.round(Math.random()) * 25)
-            }
-        }
-    }
+        /*if (date <= ao[an][duedate]) {
+            let d = {
+                "learnerid":lo[ln]["lid"],
+                "assignmentid":ao[an]["aid"],
+                "sinfo":{
+                    "sdate": date,
+                    "grade":(Math.round(Math.random()) * 25)
+                        }
+                    }
+                                    }
+                            }
+        else {
+            let d = {
+                "learnerid":lo[ln]["lid"],
+                "assignmentid":ao[an]["aid"],
+                "sinfo":{
+                    "sdate": date,
+                    "grade":((Math.round(Math.random()) * 25)-2.5)
+                        }
+                    }
+                */}
     else if (an.includes("SBA")) {
-        let d = {
-            "learnerid":lo[ln]["lid"],
-            "assignmentid":ao[an]["aid"],
-            "sinfo":{
-                "sdate":today.toISOString().split('T')[0],
-                "grade":(Math.round(Math.random()) * 75)
+        if (date <= ao[an]["duedate"]) {
+            let d = {
+                "learnerid":lo[ln]["learnerid"],
+                "assignmentid":ao[an]["aid"],
+                "sinfo":{
+                    "sdate": date,
+                    "grade":(Math.round(Math.random()) * 25)
+                        }
+                    }
+                                    }
+        else {
+            let d = {
+                "learnerid":lo[ln]["learnerid"],
+                "assignmentid":ao[an]["aid"],
+                "sinfo":{
+                    "sdate": date,
+                    "grade":((Math.round(Math.random()) * 25)-2.5)
+                        }
+                    }
             }
-        }
-    }
+                                    }
     else {
         return "Enter a valid assignment"
-    }
+        }
 }
+console.log(SubmissionObject("Lebron James", "SBA_RBC_Ruby Fundamentals"))
