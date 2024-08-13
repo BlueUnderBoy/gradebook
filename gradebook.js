@@ -159,6 +159,7 @@ console.log(SubmissionObject("LeBron James", "KBA_JSC_JavaScript Exam"))
 console.log(SubmissionObject("Kevin Durant", "SBA_RBC_Ruby Fundamentals"))
 console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
 
-function GetLearnerData(lname, courseid, agid) {
+function GetLearnerData(lname) {
+    
 
 }
