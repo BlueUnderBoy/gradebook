@@ -162,9 +162,24 @@ console.log(SubmissionObject("Stephen Curry", "SBA_RBC_Ruby Fundamentals"))
 function GetLearnerData(ln, an) {
     let sub = ln + "_Submission_" + an
     let a = ao[an]["aid"]
+    var pp = 0
+    var sp = 0
+    var avg = 0
+    for (i=0;i<so.length;i++) {
+        if (so[i].includes(ln)) {
+            sp += so[i]["sinfo"]["grade"]
+            pp += ao[an]["maxpoints"]
+        }
+        else {
+            continue
+        }
+        avg += (sp/pp)*100
+    }
     let d = {
         "id":lo[ln]["learnerid"],
-        "avg":,
+        "avg":avg,
         a: so[sub]["sinfo"]["grade"]
     }
+    return d
 }
+console.log(GetLearnerData("LeBron James", "SBA_PYC_Python Fundamentals"))
