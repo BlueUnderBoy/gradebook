@@ -132,4 +132,4 @@ function SubmissionObject(ln, an) {
         return "Enter a valid assignment"
         }
 }
-console.log(SubmissionObject("Lebron James", "SBA_RBC_Ruby Fundamentals"))
+console.log(SubmissionObject("LeBron James", "SBA_RBC_Ruby Fundamentals"))
