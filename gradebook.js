@@ -183,4 +183,4 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
     return d
 }
 console.log(getLearnerData())
-console.log(ao[0])
+console.log(ao)
