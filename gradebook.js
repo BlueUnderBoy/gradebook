@@ -85,27 +85,27 @@ console.log(ao)
 function SubmissionObject(ln, an) {
     const date = new Date()
     if (an.includes("KBA")) {
-        /*if (date <= ao[an][duedate]) {
+        if (date > ao[an]["duedate"]) {
             let d = {
-                "learnerid":lo[ln]["lid"],
+                "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate": date,
-                    "grade":(Math.round(Math.random()) * 25)
-                        }
-                    }
-                                    }
-                            }
+                    "sdate":date,
+                    "grade":(Math.round(Math.random())*25)-2.5
+                }
+            }
+        }
         else {
             let d = {
-                "learnerid":lo[ln]["lid"],
+                "learnerid":lo[ln]["learnerid"],
                 "assignmentid":ao[an]["aid"],
                 "sinfo":{
-                    "sdate": date,
-                    "grade":((Math.round(Math.random()) * 25)-2.5)
-                        }
-                    }
-                */}
+                    "sdate":date,
+                    "grade":Math.round(Math.random())*25
+                }
+            }
+        }
+    }
     else if (an.includes("SBA")) {
         if (date <= ao[an]["duedate"]) {
             let d = {
@@ -131,5 +131,5 @@ function SubmissionObject(ln, an) {
     else {
         return "Enter a valid assignment"
         }
-}
+}                                                                                                                                                                                                                
 console.log(SubmissionObject("LeBron James", "SBA_RBC_Ruby Fundamentals"))
