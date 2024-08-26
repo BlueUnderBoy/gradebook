@@ -79,11 +79,22 @@ const CourseInfo = {
   function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
     let valid_assignments = []
     let avg = 0
+    let pr = 0
+    let pp = 0
+    const today = new Date();
+    const date = today.toISOString().split('T')[0];
     let aid = LearnerSubmission[0]["assignment_id"]
     for(i=0;i<AssignmentGroup["assignments"].length;i++){
         if (AssignmentGroup["assignments"][i]["id"] == aid){
-            if 
-
+            if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"]>=LearnerSubmission[0]["submission"]["submitted_at"]) {
+                pr += LearnerSubmission[0]["submission"]["score"]
+                pp += AssignmentGroup["assignments"][i]["points_possible"] 
+            }
+            else {
+              pr += LearnerSubmission[0]["submission"]["score"]*0.9
+                pp += AssignmentGroup["assignments"][i]["points_possible"] 
+            }
+      
         }
     }
     let d = {
