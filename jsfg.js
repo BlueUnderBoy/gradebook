@@ -90,17 +90,18 @@ const CourseInfo = {
                 pr += LearnerSubmission[0]["submission"]["score"]
                 pp += AssignmentGroup["assignments"][i]["points_possible"] 
             }
-            else {
+            else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
               pr += LearnerSubmission[0]["submission"]["score"]*0.9
-                pp += AssignmentGroup["assignments"][i]["points_possible"] 
+              pp += AssignmentGroup["assignments"][i]["points_possible"] 
             }
-      
+            else {}
         }
+        else{}
     }
     let d = {
         "id": LearnerSubmission[0]["learner_id"],
         "avg":avg,
-        [a]: so[sub]["sinfo"]["grade"]
+        aid: pr/pp
     }
     return d
 }
