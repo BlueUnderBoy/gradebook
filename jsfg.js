@@ -77,32 +77,42 @@ const CourseInfo = {
   ];
 
   function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
-    let valid_assignments = []
     let avg = 0
     let pr = 0
     let pp = 0
     const today = new Date();
     const date = today.toISOString().split('T')[0];
-    let aid = LearnerSubmission[0]["assignment_id"]
-    for(i=0;i<AssignmentGroup["assignments"].length;i++){
-        if (AssignmentGroup["assignments"][i]["id"] == aid){
-            if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"]>=LearnerSubmission[0]["submission"]["submitted_at"]) {
+    
+    let d1 = {
+      "id": 125,
+        "avg":avg
+        //aid: score on assignment
+    }
+
+    let d2 = {
+        "id": 132,
+        "avg":avg
+        //aid: score on assignment
+    }
+
+    for(i=0;i<aid.length;i++){
+      for(a=0;a<AssignmentGroup["assignments"].length;a++)
+        if (aid[i] == AssignmentGroup["assignments"][a]["id"]){
+            if (date>AssignmentGroup["assignments"][a]["due_at"] && AssignmentGroup["assignments"][a]["due_at"]>=LearnerSubmission[0]["submission"]["submitted_at"]) {
                 pr += LearnerSubmission[0]["submission"]["score"]
-                pp += AssignmentGroup["assignments"][i]["points_possible"] 
+                pp += AssignmentGroup["assignments"][i]["points_possible"]
+                d[aid] = pr/pp
             }
             else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
               pr += LearnerSubmission[0]["submission"]["score"]*0.9
-              pp += AssignmentGroup["assignments"][i]["points_possible"] 
+              pp += AssignmentGroup["assignments"][i]["points_possible"]
+              d[aid] = pr/pp 
             }
-            else {}
+            else {continue}
         }
-        else{}
+        else {continue}
     }
-    let d = {
-        "id": LearnerSubmission[0]["learner_id"],
-        "avg":avg,
-        aid: pr/pp
-    }
+    
     return d
 }
 
