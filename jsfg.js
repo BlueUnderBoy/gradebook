@@ -109,12 +109,12 @@ const CourseInfo = {
     for(i=0;i<LearnerSubmission.length;i++){
       if (LearnerSubmission[i]["learner_id"] == d1["id"]){
           if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"] >= LearnerSubmission[i]["submission"]["submitted_at"]) {
-              d1[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]
+              d1[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"])/possible_points(LearnerSubmission[i]["assignment_id"])
               dopr += LearnerSubmission[i]["submission"]["score"]
               dopp += possible_points(LearnerSubmission[i]["assignment_id"])
           }
           else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
-            d1[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]*0.9
+            d1[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"]*0.9)/possible_points(LearnerSubmission[i]["assignment_id"])
             dopr += LearnerSubmission[i]["submission"]["score"]*0.9
             dopp += possible_points(LearnerSubmission[i]["assignment_id"])
           }
@@ -122,12 +122,12 @@ const CourseInfo = {
       }
       else {
           if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"] >= LearnerSubmission[i]["submission"]["submitted_at"]) {
-            d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]
+            d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]/possible_points(LearnerSubmission[i]["assignment_id"])
             dtpr += LearnerSubmission[i]["submission"]["score"]
             dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
           }
           else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
-            d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]*0.9
+            d2[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"]*0.9)/possible_points(LearnerSubmission[i]["assignment_id"])
             dtpr += LearnerSubmission[i]["submission"]["score"]*0.9
             dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
           }
