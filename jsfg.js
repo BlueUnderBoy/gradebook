@@ -76,10 +76,21 @@ const CourseInfo = {
     },
   ];
 
+  function possible_points(id){
+    for (b=0;b<AssignmentGroup.length;b++){
+      if (AssignmentGroup[b]["id"] == id){
+        return AssignmentGroup[b]["points_possible"]
+      }
+      else{continue}
+    }
+  }
+
   function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
     let avg = 0
-    let pr = 0
-    let pp = 0
+    let dopr = 0
+    let dtpr = 0
+    let dopp = 0
+    let dtpp = 0
     const today = new Date();
     const date = today.toISOString().split('T')[0];
     
@@ -95,25 +106,36 @@ const CourseInfo = {
         //aid: score on assignment
     }
 
-    for(i=0;i<aid.length;i++){
-      for(a=0;a<AssignmentGroup["assignments"].length;a++)
-        if (aid[i] == AssignmentGroup["assignments"][a]["id"]){
-            if (date>AssignmentGroup["assignments"][a]["due_at"] && AssignmentGroup["assignments"][a]["due_at"]>=LearnerSubmission[0]["submission"]["submitted_at"]) {
-                pr += LearnerSubmission[0]["submission"]["score"]
-                pp += AssignmentGroup["assignments"][i]["points_possible"]
-                d[aid] = pr/pp
-            }
-            else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
-              pr += LearnerSubmission[0]["submission"]["score"]*0.9
-              pp += AssignmentGroup["assignments"][i]["points_possible"]
-              d[aid] = pr/pp 
-            }
-            else {continue}
-        }
-        else {continue}
-    }
-    
-    return d
+    for(i=0;i<LearnerSubmission.length;i++){
+      if (LearnerSubmission[i]["learner_id"] == d1["id"]){
+          if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"] >= LearnerSubmission[i]["submission"]["submitted_at"]) {
+              d1[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]
+              dopr += LearnerSubmission[i]["submission"]["score"]
+              dopp += possible_points(LearnerSubmission[i]["assignment_id"])
+          }
+          else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
+            d1[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]*0.9
+            dopr += LearnerSubmission[i]["submission"]["score"]*0.9
+            dopp += possible_points(LearnerSubmission[i]["assignment_id"])
+          }
+          else {continue}
+      }
+      else {
+          if (date>AssignmentGroup["assignments"][i]["due_at"] && AssignmentGroup["assignments"][i]["due_at"] >= LearnerSubmission[i]["submission"]["submitted_at"]) {
+            d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]
+            dtpr += LearnerSubmission[i]["submission"]["score"]
+            dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
+          }
+          else if (date>AssignmentGroup["assignments"][i]["due_at"]) {
+            d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]*0.9
+            dtpr += LearnerSubmission[i]["submission"]["score"]*0.9
+            dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
+          }
+          else {continue}
+      }
+  }
+
+
 }
 
   
