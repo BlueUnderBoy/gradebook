@@ -76,14 +76,18 @@ const LearnerSubmissions = [
   },
 ];
 
-/*function possible_points(id){
-  for (b=0;b<AssignmentGroup.length;b++){
-    if (AssignmentGroup["assignments"][b]["id"] == id){
-      return AssignmentGroup["assignments"][b]["points_possible"]
+function get_learner_ids(LearnerSubmission){
+  let learner_ids = []
+  for(a=0;a<LearnerSubmission.length;a++){
+    if (learner_ids.includes(LearnerSubmission[a]["learner_id"])){
+      continue
     }
-    else{continue}
+    else {
+      learner_ids.push(LearnerSubmission[a]["learner_id"])
+    }
   }
-}*/
+  return learner_ids
+}
 
 
 function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
@@ -93,15 +97,8 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
   let dtpp = 0
 
   //Create list of learners who submitted
-  let lid = []
-  for(a=0;a<LearnerSubmission.length;a++){
-    if (lid.includes(LearnerSubmission[a]["learner_id"])){
-      continue
-    }
-    else {
-      lid.push(LearnerSubmission[a]["learner_id"])
-    }
-  }  
+  let lid = get_learner_ids(LearnerSubmission)
+  
   console.log(lid)
   //create hashes for all learners who submitted
   let d1 = {}
@@ -184,11 +181,11 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
         const ddate = dday.toISOString().split('T')[0];
         if (LearnerSubmission[z]["assignment_id"] == dos[y] && LearnerSubmission[z]["assignment_id"] == AssignmentGroup["assignments"][yy]["id"] && LearnerSubmission[z]["learner_id"] == d1["id"] && sdate <= ddate){
           dopr += LearnerSubmission[z]["submission"]["score"]
-          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"])/(AssignmentGroup["assignments"][yy]["points_possible"]))*100 + "%"
+          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"])/(AssignmentGroup["assignments"][yy]["points_possible"]))
         }
         else if (LearnerSubmission[z]["assignment_id"] == dos[y] && LearnerSubmission[z]["assignment_id"] == AssignmentGroup["assignments"][yy]["id"] && LearnerSubmission[z]["learner_id"] == d1["id"] && sdate>ddate){
           dopr += (LearnerSubmission[z]["submission"]["score"]*0.9)
-          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][yy]["points_possible"]))*100 + "%"
+          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][yy]["points_possible"]))
         }
         else {continue}
       }
@@ -206,11 +203,11 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
         const ddate = dday.toISOString().split('T')[0];
         if (LearnerSubmission[l]["assignment_id"] == dts[k] && LearnerSubmission[l]["assignment_id"] == AssignmentGroup["assignments"][kk]["id"] && LearnerSubmission[l]["learner_id"] == d2["id"] && sdate <= ddate){
           dtpr += LearnerSubmission[l]["submission"]["score"]
-          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"])/(AssignmentGroup["assignments"][kk]["points_possible"]))*100 + "%"
+          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"])/(AssignmentGroup["assignments"][kk]["points_possible"]))
         }
         else if (LearnerSubmission[l]["assignment_id"] == dts[k] && LearnerSubmission[l]["assignment_id"] == AssignmentGroup["assignments"][kk]["id"] && LearnerSubmission[l]["learner_id"] == d2["id"] && sdate>ddate){
           dtpr += (LearnerSubmission[l]["submission"]["score"]*0.9)
-          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][kk]["points_possible"]))*100 + "%"
+          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][kk]["points_possible"]))
         }
         else {continue}
       }
@@ -231,7 +228,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
   
   return [d1, d2]
 }
-
+ 
 const result = getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmissions]);
 
 console.log(result);
