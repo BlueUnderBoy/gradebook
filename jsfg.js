@@ -89,6 +89,22 @@ function get_learner_ids(LearnerSubmission){
   return learner_ids
 }
 
+function FindValidAssignments(AssignmentGroup) {
+  const today = new Date();
+  const date = today.toISOString().split('T')[0];
+  let va = []
+  for (c=0;c<AssignmentGroup["assignments"].length;c++){
+    const sday = new Date(AssignmentGroup.assignments[c].due_at);
+    const sdate = sday.toISOString().split('T')[0];
+    if (sdate > date) {
+      continue
+    }
+    else {
+      va.push(AssignmentGroup["assignments"][c]["id"])
+    }
+  }
+  return va
+}
 
 function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
   let dopr = 0
@@ -114,19 +130,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
   console.log(d1)
   console.log(d2)
   //Sort valid assignments from invalid
-  const today = new Date();
-  const date = today.toISOString().split('T')[0];
-  let valid_assignments = []
-  for (c=0;c<AssignmentGroup["assignments"].length;c++){
-    const sday = new Date(AssignmentGroup.assignments[c].due_at);
-    const sdate = sday.toISOString().split('T')[0];
-    if (sdate > date) {
-      continue
-    }
-    else {
-      valid_assignments.push(AssignmentGroup["assignments"][c]["id"])
-    }
-  }
+  let valid_assignments = FindValidAssignments(AssignmentGroup)
   console.log(valid_assignments)
   //Sort valid assignments submitted by learner
   let dos = []
