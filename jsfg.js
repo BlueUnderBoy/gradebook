@@ -145,6 +145,7 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
   d1["avg"] = dopr/dopp
   d2["avg"] = dtpr/dtpp
   return d1["avg"] + "\n" + d2["avg"]
+  }
 }
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmissions]);
