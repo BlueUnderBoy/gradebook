@@ -184,11 +184,11 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
         const ddate = dday.toISOString().split('T')[0];
         if (LearnerSubmission[z]["assignment_id"] == dos[y] && LearnerSubmission[z]["assignment_id"] == AssignmentGroup["assignments"][yy]["id"] && LearnerSubmission[z]["learner_id"] == d1["id"] && sdate <= ddate){
           dopr += LearnerSubmission[z]["submission"]["score"]
-          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"])/(AssignmentGroup["assignments"][yy]["points_possible"]))
+          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"])/(AssignmentGroup["assignments"][yy]["points_possible"]))*100 + "%"
         }
         else if (LearnerSubmission[z]["assignment_id"] == dos[y] && LearnerSubmission[z]["assignment_id"] == AssignmentGroup["assignments"][yy]["id"] && LearnerSubmission[z]["learner_id"] == d1["id"] && sdate>ddate){
           dopr += (LearnerSubmission[z]["submission"]["score"]*0.9)
-          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][yy]["points_possible"]))
+          d1[dos[y]] = ((LearnerSubmission[z]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][yy]["points_possible"]))*100 + "%"
         }
         else {continue}
       }
@@ -206,11 +206,11 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
         const ddate = dday.toISOString().split('T')[0];
         if (LearnerSubmission[l]["assignment_id"] == dts[k] && LearnerSubmission[l]["assignment_id"] == AssignmentGroup["assignments"][kk]["id"] && LearnerSubmission[l]["learner_id"] == d2["id"] && sdate <= ddate){
           dtpr += LearnerSubmission[l]["submission"]["score"]
-          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"])/(AssignmentGroup["assignments"][kk]["points_possible"]))
+          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"])/(AssignmentGroup["assignments"][kk]["points_possible"]))*100 + "%"
         }
         else if (LearnerSubmission[l]["assignment_id"] == dts[k] && LearnerSubmission[l]["assignment_id"] == AssignmentGroup["assignments"][kk]["id"] && LearnerSubmission[l]["learner_id"] == d2["id"] && sdate>ddate){
           dtpr += (LearnerSubmission[l]["submission"]["score"]*0.9)
-          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][kk]["points_possible"]))
+          d2[dts[k]] = ((LearnerSubmission[l]["submission"]["score"]*0.9)/(AssignmentGroup["assignments"][kk]["points_possible"]))*100 + "%"
         }
         else {continue}
       }
@@ -227,62 +227,9 @@ function getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmission]) {
     console.log("Cannot divide by zero!")
   }
 
-  console.log(d1)
-  console.log(d2)
-
-  //Rearrange hash for desired output
-
-
-  /*for(i=0;i<LearnerSubmission.length;i++){
-    if (LearnerSubmission[i]["learner_id"] == d1["id"]){
-      for(a=0;a<AssignmentGroup.length;a++){
-        if (AssignmentGroup["assignments"][a]["id"] == LearnerSubmission[i]["assignment_id"]){
-          const AGDO = new Date(AssignmentGroup["assignments"][a]["due_at"])
-          const LSDO = new Date(LearnerSubmission[i]["submission"]["submitted_at"])
-          if (date>AGDO && AGDO >= LSDO) {
-            d1[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"])/possible_points(LearnerSubmission[i]["assignment_id"])
-            dopr += LearnerSubmission[i]["submission"]["score"]
-            dopp += possible_points(LearnerSubmission[i]["assignment_id"])
-          }
-          else if (date>AGDO) {
-            d1[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"]*0.9)/possible_points(LearnerSubmission[i]["assignment_id"])
-            dopr += LearnerSubmission[i]["submission"]["score"]*0.9
-            dopp += possible_points(LearnerSubmission[i]["assignment_id"])
-          }
-          else {continue}
-        }
-      }
-    }  
-  else {
-    for(a=0;a<AssignmentGroup.length;a++){
-      if (AssignmentGroup["assignments"][a]["id"] == LearnerSubmission[i]["assignment_id"]){
-        const AGDO = new Date(AssignmentGroup["assignments"][a]["due_at"])
-        const LSDO = new Date(LearnerSubmission[i]["submission"]["submitted_at"])
-        if (date>AGDO && AGDO >= LSDO) {
-          d2[LearnerSubmission[i]["assignment_id"]] = LearnerSubmission[i]["submission"]["score"]/possible_points(LearnerSubmission[i]["assignment_id"])
-          dtpr += LearnerSubmission[i]["submission"]["score"]
-          dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
-        }
-        else if (date>AGDO) {
-          d2[LearnerSubmission[i]["assignment_id"]] = (LearnerSubmission[i]["submission"]["score"]*0.9)/possible_points(LearnerSubmission[i]["assignment_id"])
-          dtpr += LearnerSubmission[i]["submission"]["score"]*0.9
-          dtpp += possible_points(LearnerSubmission[i]["assignment_id"])
-        }
-        else {continue}
-      } 
-    }
-  }
-  try {
-    console.log(dopr/dopp)
-    console.log(dtpr/dtpp)
-  }
-  catch (error) {
-    
-  }
-  d1["avg"] += dopr/dopp
-  d2["avg"] += dtpr/dtpp
-  return d1 
-  }*/
+  //return output
+  
+  return [d1, d2]
 }
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, [LearnerSubmissions]);
